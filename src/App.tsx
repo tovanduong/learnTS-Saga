@@ -1,56 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import ButtonAppBar from 'component/AppBar';
+import Admin from 'features/admin/Admin';
+import Login from 'features/auth/login/Login';
+import Register from 'features/auth/register/Register';
+import Home from 'features/user/Home';
+import { UserDetail } from 'model';
+import React, { useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 
 function App() {
+  const token = localStorage.getItem('accesstoken');
+  const user: UserDetail = JSON.parse(localStorage.getItem('user') || '{}');
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (token && user.role === 'admin') {
+      navigate('/admin');
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className="App-container">
+      <ButtonAppBar />
+      <div className="App-main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/admin/*" element={<PrivateRoute />}> */}
+          <Route path="/admin/*" element={<Admin />} />
+          {/* </Route> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+        </Routes>
+      </div>
     </div>
   );
 }

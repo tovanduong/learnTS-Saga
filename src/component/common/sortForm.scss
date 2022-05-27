@@ -1,0 +1,21 @@
+.order-container {
+}
+
+.order-select {
+  //   background-color: #fff;
+  color: #fff !important;
+  border-radius: 10px;
+
+  &::after {
+    border-bottom: none !important;
+  }
+  svg {
+    color: #fff !important;
+  }
+  div {
+    padding: 0;
+  }
+  input {
+    border-bottom: none !important;
+  }
+}

@@ -1,0 +1,37 @@
+.addEdit-form {
+  display: flex;
+  // flex-direction: column;
+
+  width: 100%;
+  margin-top: 40px;
+  .MuiFormControl-root {
+    label,
+    input {
+      color: #fff;
+    }
+    div div {
+      color: #fff;
+    }
+    svg {
+      color: #fff;
+    }
+    margin-bottom: 40px;
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #fff !important;
+  }
+}
+
+.addEdit-inputField {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.addEdit-btn {
+  margin-top: 20px !important;
+  background-color: #fff !important;
+  padding: 10px 26px !important;
+  font-size: 18px !important;
+  color: #000 !important;
+}

@@ -1,0 +1,17 @@
+.breadcrumbs-Admin {
+  color: #fff !important;
+  a {
+    color: #fff;
+  }
+}
+
+.loading {
+  position: absolute !important;
+  width: 100%;
+  top: -6px;
+  visibility: hidden;
+
+  &.active {
+    visibility: visible;
+  }
+}
